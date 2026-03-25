@@ -1,17 +1,29 @@
 ---
 name: review-vs-branch
-description: Réalise une code review approfondie de la branche courante par rapport à une branche cible (par défaut `develop`). Analyse les changements pour la qualité du code, le respect des principes SOLID/Clean Code et les meilleures pratiques React/TypeScript. À utiliser quand l'utilisateur demande une revue de sa branche ou une comparaison avec une branche cible donnée.
+description: Réalise une code review approfondie de la branche courante par rapport à une branche cible (par défaut `develop`). Analyse les changements pour la qualité du code, le respect des principes SOLID/Clean Code et les meilleures pratiques (priorité React/TypeScript quand le diff touche le front). À utiliser quand l'utilisateur demande une revue de sa branche ou une comparaison avec une branche cible donnée. English — Performs deep branch-vs-target review vs base branch (default develop), SOLID/Clean Code and stack-appropriate best practices. Triggers branch review, compare branch to develop/main/master, pre-merge or MR/PR-style review, diff review.
 ---
 
 # Review vs branche cible
 
-## Analyse du Diff par rapport à la branche cible
+## Analyse du diff par rapport à la branche cible
 
-Voici les modifications de code à analyser pour cette revue technique :
+### 1. Obtenir le diff
 
-Si l'utilisateur indique une branche cible différente de `develop` (ex: `main`, `master`), on exécutera le script avec la branche en argument 1 : `skills/review-vs-branch/scripts/get-diff.sh <TARGET_BRANCH>`. Sinon, on exécutera le script sans argument (défaut `develop`).
+1. **Répertoire Git** : exécuter les commandes depuis la **racine du dépôt à auditer** (workspace courant ou chemin indiqué par l’utilisateur). Le script ne change pas de répertoire : `git` doit donc voir le bon repo depuis le cwd.
+2. **Emplacement du script** : utiliser `scripts/get-diff.sh` relatif au **répertoire du skill** (dossier qui contient ce `SKILL.md`). Exemple si le skill vit sous `skills/review-vs-branch` à la racine du workspace : `bash skills/review-vs-branch/scripts/get-diff.sh`.
+3. **Branche cible** : si l’utilisateur impose une base autre que `develop` (ex. `main`, `master`), passer cette branche en **premier argument**. Sinon, appeler le script **sans argument** (défaut : `develop`).
 
-!`skills/review-vs-branch/scripts/get-diff.sh`
+Commande type :
+
+```bash
+bash <SKILL_DIR>/scripts/get-diff.sh [<TARGET_BRANCH>]
+```
+
+Remplacer `<SKILL_DIR>` par le chemin réel vers le dossier du skill (celui de `SKILL.md`). Ne pas s’appuyer sur une syntaxe `!` / run magique propre à un outil : **exécuter explicitement** la commande dans le terminal et **analyser uniquement le stdout** du script comme périmètre de la revue.
+
+### 2. Périmètre d’analyse
+
+**Tout le contenu imprimé par le script sur la sortie standard** est le diff à commenter. Ne pas supposer qu’un bloc est déjà injecté dans le message sans avoir exécuté le script (ou sans avoir reçu le diff d’une autre source équivalente).
 
 ---
 
@@ -23,8 +35,9 @@ Tu possèdes une excellente expertise technique (SOLID, KISS, DRY, YAGNI, design
 
 ## Règles de la Revue
 
-Fais des commentaires détaillés et constructifs sur les extraits de code ci-dessus en te concentrant sur l'amélioration de la qualité, de la lisibilité et du respect des meilleures pratiques :
+Fais des commentaires détaillés et constructifs sur le **diff obtenu à l’étape précédente**, en visant la qualité, la lisibilité et les bonnes pratiques **adaptées aux fichiers et langages réellement modifiés** :
 
+- **Périmètre stack** : adapter la profondeur et les critères au stack et aux couches touchés (front, back, infra, config, SQL, etc.). Ne pas lire le diff comme « front uniquement » si les changements sont majoritairement ailleurs, ni ignorer le front si le diff y est significatif.
 - **Analyse des erreurs** : Détecte d'éventuelles erreurs et suggère des corrections.
 - **Efficacité & Maintenabilité** : Propose des améliorations (SOLID, KISS, DRY, YAGNI).
 - **Standards de codage** : Mets en évidence tout écart par rapport aux pratiques standard (Clean Code, Boy Scout Rule).
