@@ -1,2 +1,3 @@
 # agent-skills
-My personnal collection of skills for AI coding agents.
+
+My personal collection of skills for AI coding agents.
