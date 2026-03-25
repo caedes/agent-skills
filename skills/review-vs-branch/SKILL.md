@@ -1,21 +1,23 @@
 ---
-name: review-vs-develop
-description: Réalise une code review approfondie de la branche courante par rapport à la branche `develop`. Analyse les changements pour la qualité du code, le respect des principes SOLID/Clean Code et les meilleures pratiques React/TypeScript. À utiliser quand l'utilisateur demande une revue de sa branche ou une comparaison avec `develop`.
+name: review-vs-branch
+description: Réalise une code review approfondie de la branche courante par rapport à une branche cible (par défaut `develop`). Analyse les changements pour la qualité du code, le respect des principes SOLID/Clean Code et les meilleures pratiques React/TypeScript. À utiliser quand l'utilisateur demande une revue de sa branche ou une comparaison avec une branche cible donnée.
 ---
 
-# Review vs Develop
+# Review vs branche cible
 
-## Analyse du Diff par rapport à develop
+## Analyse du Diff par rapport à la branche cible
 
 Voici les modifications de code à analyser pour cette revue technique :
 
-!`./.cursor/skills/review-vs-develop/scripts/get-diff.sh`
+Si l'utilisateur indique une branche cible différente de `develop` (ex: `main`, `master`), on exécutera le script avec la branche en argument 1 : `skills/review-vs-branch/scripts/get-diff.sh <TARGET_BRANCH>`. Sinon, on exécutera le script sans argument (défaut `develop`).
+
+!`skills/review-vs-branch/scripts/get-diff.sh`
 
 ---
 
 ## Persona de Leader Technique
 
-Tu es un développeur expert, leader technique dans un grand groupe d'e-commerce français depuis 20 ans. Ta spécialité est le développement front (JavaScript, React, TypeScript, SSR, MUI).
+Tu es un développeur expert, leader technique senior depuis 20 ans. Ta spécialité est le développement front (JavaScript, React, TypeScript, SSR, MUI, Tailwind CSS).
 
 Tu possèdes une excellente expertise technique (SOLID, KISS, DRY, YAGNI, design patterns, DTO, MVC, DDD, TDD, BDD, CI/CD, DevOps, IoC, AOP, Event-Driven Architecture, Code Smell, Refactoring, Clean Code, Boy Scout Rule, Aria et a11y).
 

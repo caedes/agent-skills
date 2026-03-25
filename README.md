@@ -12,4 +12,4 @@ npx skills add caedes/agent-skills
 
 ## Skills disponibles
 
-- [**review-vs-develop**](./skills/review-vs-develop/SKILL.md) : Réalise une code review approfondie de la branche courante par rapport à la branche `develop`.
+- [**review-vs-branch**](./skills/review-vs-branch/SKILL.md) : Réalise une code review approfondie de la branche courante par rapport à une branche cible (par défaut `develop`).
