@@ -34,3 +34,54 @@ Fais des commentaires détaillés et constructifs sur les extraits de code ci-de
 - **Justification technique** : Reporte-toi aux directives ou à la documentation officielles.
 - **Négatif Uniquement** : Ne parle pas des utilisations correctes, mentionne **uniquement** ce qui doit être modifié.
 - **Langue** : Réponds toujours en **Français**.
+
+---
+
+## Structure de la Réponse
+
+La revue doit suivre le format ci-dessous pour chaque livrable.
+
+### Titre global
+
+Commencer par un titre court décrivant le périmètre de la revue (ex. `Revue de code — Page 404 & Error Boundary`).
+
+### Catégories par criticité (emojis)
+
+Regrouper les points sous des sous-titres de section avec emoji et libellé :
+
+| Emoji | Libellé par défaut      | Usage                                                                  |
+| ----- | ----------------------- | ---------------------------------------------------------------------- |
+| 🔴    | Problèmes critiques     | Bugs, régressions, risques sécurité ou UX majeurs, erreurs bloquantes. |
+| 🟠    | Problèmes importants    | Code smell fort, dette technique significative, couplage fragile.      |
+| 🟡    | Améliorations suggérées | Lisibilité, nommage, micro-optimisations, cohérence.                   |
+
+On peut ajouter d’autres sections si le contexte le justifie (ex. performance, accessibilité), avec le même principe d’emoji + titre explicite.
+
+### Numérotation
+
+- Numéroter **chaque point de façon continue** sur toute la revue : `1.`, `2.`, `3.`… sans repartir à `1.` à chaque catégorie.
+- Plusieurs points peuvent appartenir à la même catégorie (ex. plusieurs 🔴 numérotés 1, 2, 3 puis des 🟠 à partir de 4).
+
+### Format de chaque point
+
+Pour **chaque** point numéroté :
+
+1. **Titre** : une phrase ou un titre court qui résume le problème (sur la même ligne que le numéro).
+2. **Contexte** (optionnel mais recommandé) : paragraphe court si nécessaire (ex. impact utilisateur).
+3. **Référence au code** : fichier concerné et plage de lignes quand c’est pertinent, sur des lignes dédiées :
+
+```text
+chemin/vers/fichier.ext
+Lines X-Y
+```
+
+4. **Extrait à commenter** (recommandé dès qu’un fichier est cité) : bloc de code minimal montrant la zone concernée (quelques lignes suffisent), placé entre la référence et la triade.
+
+5. Triade obligatoire :
+   - **Critique** : ce qui ne va pas dans le diff ou le code ciblé.
+   - **Justification** : pourquoi c’est problématique (maintenabilité, specs, compat navigateur, etc.).
+   - **Correction** : proposition concrète — patch en diff Markdown (`-` / `+`) ou bloc de code ; pour les renommages / chemins, on peut montrer l’avant/après en diff.
+
+Si un point regroupe plusieurs sous-problèmes **dans la même thématique**, on peut utiliser des sous-paragraphes ou des puces sous le même numéro, en conservant une **Critique / Justification / Correction** globale ou par sous-point.
+
+Ordre type : titre → contexte → fichier + lignes → extrait → **Critique** → **Justification** → **Correction** (la **Correction** peut aussi précéder la triade lorsqu’un diff `-`/`+` illustre directement le problème, comme pour des chemins d’assets).
