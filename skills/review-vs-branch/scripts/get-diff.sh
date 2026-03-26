@@ -55,4 +55,5 @@ git diff "$TARGET_REF...$SOURCE_REF" \
   ':(exclude)package-lock.json' \
   ':(exclude)yarn.lock' \
   ':(exclude)*.{svg,png,jpg,jpeg,gif,webp,ico,bmp}' \
-  ':(exclude)*.md'
+  ':(exclude)*.md' \
+  ':(exclude,glob)**/*.snap'
