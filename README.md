@@ -2,11 +2,11 @@
 
 > Propulsé par [skills](https://github.com/vercel-labs/skills)
 
-Ce dépôt centralise mes compétences (Agent Skills) personnalisées pour les agents de codage IA dans Cursor. Il permet de structurer et de réutiliser des workflows complexes, des règles de linter personnalisées, ou des processus de revue de code.
+Ce dépôt centralise mes _skills_ personnalisées pour les agents de dev x IA.
 
 ## Installation
 
-Pour installer ces compétences dans votre projet Cursor, utilisez la commande suivante :
+Pour installer ces compétences dans votre projet, utilisez la commande suivante :
 
 ```bash
 npx skills add caedes/agent-skills
@@ -16,6 +16,7 @@ npx skills add caedes/agent-skills
 
 ### Produit & Lead Tech
 
+- [**research**](./skills/research/SKILL.md) : Produit une cartographie factuelle et objective d'un périmètre de code (inventaire, conventions, dépendances, diagrammes Mermaid, confidence map), sans opinion ni plan d'implémentation.
 - [**structured-planning**](./skills/structured-planning/SKILL.md) : Génère des plans de développement structurés et rigoureux pour les nouvelles fonctionnalités ou le refactoring.
 
 ### Développement & QA
