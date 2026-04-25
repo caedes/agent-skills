@@ -48,4 +48,15 @@ Optional support files (scripts, templates, etc.) go in subdirectories of the sk
 
 1. Create `skills/<skill-name>/SKILL.md` with frontmatter (`name`, `description`) and the skill body.
 2. Update the `## Skills disponibles` section in `README.md` with a one-line description.
-3. Commit using Conventional Commits + gitmoji (e.g., `feat: ✏️ add my-skill`).
+3. Follow the [Git workflow](#git-workflow) below: feature branch → commit → GitHub PR.
+
+## Git workflow
+
+**All changes — without exception — go through a GitHub Pull Request.** No direct commits to `main`, no direct pushes to `main`.
+
+1. Create a feature branch: `git checkout -b feature/<short-description>` (or `fix/...`, `docs/...`, `chore/...`).
+2. Commit using **Conventional Commits + gitmoji** (e.g., `feat: ✏️ add my-skill`, `docs: ✏️ update workflow`). The `gc` alias (commitizen) is the standard helper.
+3. Push the branch and open a PR on GitHub against `main` (e.g., via `gh pr create`).
+4. Merge only via the GitHub UI (or `gh pr merge`) once review is OK.
+
+This applies to **every** change: skill additions, doc tweaks, config files, typo fixes — everything.
