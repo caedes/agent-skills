@@ -1,0 +1,5 @@
+# Claude Code — per-user local settings (never commit)
+.claude/settings.local.json
+
+# macOS
+.DS_Store
